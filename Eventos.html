@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+    <style>
+    .titulo-eventos{
+    text-align:center;
+    margin-top:120px;
+    color:#003366;
+    font-size:3rem;
+}
+
+.seccion-evento{
+    padding:60px;
+}
+
+.seccion-evento h2{
+    color:#003366;
+    margin-bottom:30px;
+}
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+.galeria img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+    transition:.4s;
+    cursor:pointer;
+}
+
+.galeria img:hover{
+    transform:scale(1.05);
+}
+</style>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eventos</title>
+
+<link rel="stylesheet" href="css/codigo.css">
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<a href="idetex.html">Inicio</a>
+<a href="Nosotros.html">Nosotros</a>
+<a href="Eventos.html">Eventos</a>
+<a href="Contacto.html">Contacto</a>
+
+</nav>
+
+</header>
+
+<h1 class="titulo-eventos">Eventos Institucionales</h1>
+
+<!-- FERIA DE CIENCIAS -->
+
+<section id="ciencias" class="seccion-evento">
+
+<h2>🔬 Feria de Ciencias</h2>
+
+<div class="galeria">
+
+<img src="img/ciencias/1.jpg">
+<img src="img/ciencias/2.jpg">
+<img src="img/ciencias/3.jpg">
+<img src="img/ciencias/7.jpg">
+
+</div>
+
+</section>
+
+<!-- DEPORTES -->
+
+<section id="deportes" class="seccion-evento">
+
+<h2>🏆 Juegos Deportivos</h2>
+
+<div class="galeria">
+
+<img src="img/deporte/1.jpg">
+<img src="img/deporte/2.jpg">
+<img src="img/deporte/3.jpg">
+<img src="img/deporte/4.jpg">
+
+</div>
+
+</section>
+
+<!-- GRADUACION -->
+
+<section id="graduacion" class="seccion-evento">
+
+<h2>🎓 Graduación</h2>
+
+<div class="galeria">
+
+<img src="img/graduacion/8.jpg">
+<img src="img/graduacion/5.jpg">
+<img src="img/graduacion/7.jpg">
+<img src="img/graduacion/2.jpg">
+
+</div>
+
+</section>
+
+</body>
+
+</html>

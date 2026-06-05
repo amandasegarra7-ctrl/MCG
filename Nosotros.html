@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nosotros</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f4f4;
+}
+
+header{
+    background:#004080;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+nav{
+    background:#0066cc;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    font-weight:bold;
+}
+
+section{
+    padding:20px;
+}
+
+.tarjeta{
+    background:rgb(46, 144, 177);
+    padding:20px;
+    margin:15px 0;
+    border-radius:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tarjeta:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px rgba(red, green, blue, alpha);
+}
+
+button{
+    background:#0066cc;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+footer{
+    background:#004080;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+}
+</style>
+</head>
+<section id="nosotros">
+    <div class="tarjeta">
+        <h2>Misión</h2>
+        <p>Brindar una educación de calidad y calidez, acorde a los estándares educativos, necesidades e intereses de los educandos, tanto como en bachillerato general unificado como en bachillerato intensivo, preparándose para enfrentar desafíos del mundo globalizado, con oportunidades de proyectarse en la sociedad actual.</p>
+    </div>
+</section>
+<section id="nosotros">
+    <div class="tarjeta">
+        <h2>Visión</h2>
+        <p>Formar estudiantes íntegros según las nuevas innovaciones pedagógicas y tecnológicas, que sean capaces de convertirse en personas preparadas para participar activamente en una sociedad democrática, de gestión emprendimiento, y continuar con sus estudios superiores.</p>
+    </div>
+</section>
+<section id="nosotros">
+    <div class="tarjeta">
+        <h2>Fotografias</h2>
+        <img src="M3T.jpg" width="300" height="200">
+    </div>
+</section>
+
+
+<button onclick="location.href= `idetex.html`">Volver al inicio</button>
+
+</body>
+
+<script>
+
+// ===== CARRUSEL =====
+
+
+let indice = 0;
+
+const slides = document.querySelectorAll(".slide");
+
+function cambiarImagen(){
+
+    slides[indice].classList.remove("active");
+
+    indice++;
+
+    if(indice >= slides.length){
+        indice = 0;
+    }
+
+    slides[indice].classList.add("active");
+}
+
+setInterval(cambiarImagen,3000);
+
+
+// ===== CONTADOR DE VISITAS =====
+
+let visitas = localStorage.getItem("visitas");
+
+if(visitas === null){
+    visitas = 0;
+}
+
+visitas++;
+
+localStorage.setItem("visitas", visitas);
+
+document.getElementById("contadorVisitas").textContent = visitas;
+
+
+// ===== NÚMEROS ANIMADOS =====
+
+const numeros = document.querySelectorAll("[data-numero]");
+
+numeros.forEach(numero => {
+
+    const objetivo = parseInt(numero.dataset.numero);
+
+    let contador = 0;
+
+    const velocidad = objetivo / 100;
+
+    const actualizar = () => {
+
+        contador += velocidad;
+
+        if(contador < objetivo){
+
+            numero.textContent = Math.floor(contador);
+
+            requestAnimationFrame(actualizar);
+
+        }else{
+
+            numero.textContent = objetivo + "+";
+
+        }
+
+    };
+
+    actualizar();
+
+});
+
+</script>
+</html>

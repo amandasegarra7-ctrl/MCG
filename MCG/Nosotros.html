@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosotros</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    padding-top:90px;
+}
+
+/* ENCABEZADO */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#003366;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ffd700;
+}
+
+/* CONTENIDO */
+
+.titulo{
+    text-align:center;
+    color:#003366;
+    font-size:3rem;
+    margin:30px 0;
+}
+
+.contenedor{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.tarjeta{
+    background:white;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+.tarjeta h2{
+    color:#003366;
+    margin-bottom:15px;
+}
+
+.tarjeta p{
+    line-height:1.8;
+    text-align:justify;
+}
+
+/* PIE DE PÁGINA */
+
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+    Manuel Córdova Galarza
+</div>
+
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="documentos.html">Documentos</a>
+</nav>
+
+</header>
+
+<h1 class="titulo">🏫 Nosotros</h1>
+
+<div class="contenedor">
+
+    <div class="tarjeta">
+        <h2>Misión</h2>
+        <p>
+            Brindar una educación de calidad y calidez, acorde a los estándares
+            educativos, necesidades e intereses de los educandos, tanto en
+            Bachillerato General Unificado como en Bachillerato Intensivo,
+            preparándolos para enfrentar los desafíos del mundo globalizado.
+        </p>
+    </div>
+
+    <div class="tarjeta">
+        <h2>Visión</h2>
+        <p>
+            Formar estudiantes íntegros según las nuevas innovaciones
+            pedagógicas y tecnológicas, capaces de participar activamente en la
+            sociedad, desarrollar proyectos de emprendimiento y continuar con
+            éxito sus estudios superiores.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Unidad Educativa Manuel Córdova Galarza
+</footer>
+
+</body>
+</html>

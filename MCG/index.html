@@ -245,6 +245,58 @@ padding:25px;
     padding:15px;
     text-align:center;
 }
+.lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.95);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:85%;
+    border-radius:15px;
+}
+
+.cerrar{
+    position:absolute;
+    top:20px;
+    right:40px;
+    color:white;
+    font-size:50px;
+    cursor:pointer;
+}
+
+.anterior,
+.siguiente{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    color:white;
+    font-size:60px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.anterior{
+    left:30px;
+}
+
+.siguiente{
+    right:30px;
+}
+
+.anterior:hover,
+.siguiente:hover,
+.cerrar:hover{
+    color:#ffd700;
+}
 </style>
 </head>
 
@@ -407,49 +459,105 @@ sliders.forEach(slider => {
 });
 
 </script>
-<script type="module">
+<script>
+async function cargarContador() {
+    try {
+        const respuesta = await fetch(
+            "https://api.counterapi.dev/v2/amanda-segarras-team-4436/first-counter-4436/up"
+        );
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+        const datos = await respuesta.json();
 
-import {
-getFirestore,
-doc,
-getDoc,
-updateDoc
-} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+        document.getElementById("contadorVisitas").textContent =
+            datos.data.up_count;
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCwuX9GKmLYFE16zA5Mo4Mz-zrCKE-L9aM",
-  authDomain: "manuel-cordova-galarza.firebaseapp.com",
-  projectId: "manuel-cordova-galarza",
-  storageBucket: "manuel-cordova-galarza.firebasestorage.app",
-  messagingSenderId: "784673600584",
-  appId: "1:784673600584:web:ecd87a40519cb35808147d",
-  measurementId: "G-R1CY0C73W0"
-};
+    } catch (error) {
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+        console.error("Error del contador:", error);
 
-async function contarVisita(){
+        document.getElementById("contadorVisitas").textContent =
+            "Error";
 
-    const ref = doc(db, "contador", "visitas");
-
-    const snap = await getDoc(ref);
-
-    let total = snap.data().total + 1;
-
-    await updateDoc(ref,{
-        total: total
-    });
-
-    document.getElementById("contadorVisitas").textContent = total;
+    }
 }
 
-contarVisita();
+cargarContador();
+</script>
+<!-- VISOR DE IMÁGENES -->
+
+<div id="lightbox" class="lightbox">
+
+    <span class="cerrar">&times;</span>
+
+    <span class="anterior">&#10094;</span>
+
+    <img id="imagenGrande">
+
+    <span class="siguiente">&#10095;</span>
+
+</div>
+<script>
+
+const imagenes = document.querySelectorAll(".galeria img");
+
+const lightbox = document.getElementById("lightbox");
+const imagenGrande = document.getElementById("imagenGrande");
+
+let indiceActual = 0;
+
+imagenes.forEach((img, index)=>{
+
+    img.addEventListener("click", ()=>{
+
+        indiceActual = index;
+
+        imagenGrande.src = img.src;
+
+        lightbox.style.display = "flex";
+
+    });
+
+});
+
+document.querySelector(".cerrar").onclick = ()=>{
+
+    lightbox.style.display = "none";
+
+};
+
+document.querySelector(".siguiente").onclick = ()=>{
+
+    indiceActual++;
+
+    if(indiceActual >= imagenes.length){
+        indiceActual = 0;
+    }
+
+    imagenGrande.src = imagenes[indiceActual].src;
+
+};
+
+document.querySelector(".anterior").onclick = ()=>{
+
+    indiceActual--;
+
+    if(indiceActual < 0){
+        indiceActual = imagenes.length - 1;
+    }
+
+    imagenGrande.src = imagenes[indiceActual].src;
+
+};
+
+lightbox.addEventListener("click",(e)=>{
+
+    if(e.target === lightbox){
+        lightbox.style.display = "none";
+    }
+
+});
 
 </script>
-
 
 </body>
 </html>
